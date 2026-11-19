@@ -1,0 +1,92 @@
+{
+  "holdout_start": "2013-12-31 23:00:00",
+  "holdout_end": "2014-12-29 23:00:00",
+  "test_rows": 8258,
+  "threshold": 150.0,
+  "horizons": {
+    "24h": {
+      "train_rows": 30995,
+      "models": {
+        "XGBoost": {
+          "mae": 59.79992352596753,
+          "rmse": 83.41806781700583,
+          "precision": 0.5482180293501048,
+          "recall": 0.3120525059665871
+        },
+        "Persistence": {
+          "mae": 66.97481230322111,
+          "rmse": 98.26898130071542,
+          "precision": 0.4538878842676311,
+          "recall": 0.44928400954653935
+        },
+        "Training mean": {
+          "mae": 68.707966772975,
+          "rmse": 93.17782133898963,
+          "precision": null,
+          "recall": 0.0
+        }
+      },
+      "xgboost_mae_improvement_over_persistence": 0.10712816550750548,
+      "persistence_minus_xgboost_mae": {
+        "mae_difference": 7.174888777253587,
+        "ci95": [
+          2.5363447521105846,
+          11.701598735072825
+        ],
+        "blocks": 52,
+        "resamples": 2000
+      },
+      "training_mean_minus_xgboost_mae": {
+        "mae_difference": 8.908043247007482,
+        "ci95": [
+          5.43953246658178,
+          13.087687504537225
+        ],
+        "blocks": 52,
+        "resamples": 2000
+      }
+    },
+    "48h": {
+      "train_rows": 30597,
+      "models": {
+        "XGBoost": {
+          "mae": 68.91912694513206,
+          "rmse": 91.64172266482518,
+          "precision": 0.46017699115044247,
+          "recall": 0.15625
+        },
+        "Persistence": {
+          "mae": 87.36546379268589,
+          "rmse": 121.75718484357186,
+          "precision": 0.30681133212778783,
+          "recall": 0.3058894230769231
+        },
+        "Training mean": {
+          "mae": 69.28319000529173,
+          "rmse": 93.62512284854203,
+          "precision": null,
+          "recall": 0.0
+        }
+      },
+      "xgboost_mae_improvement_over_persistence": 0.21113991784357844,
+      "persistence_minus_xgboost_mae": {
+        "mae_difference": 18.44633684755382,
+        "ci95": [
+          11.278729800750403,
+          26.00208921580424
+        ],
+        "blocks": 52,
+        "resamples": 2000
+      },
+      "training_mean_minus_xgboost_mae": {
+        "mae_difference": 0.364063060159681,
+        "ci95": [
+          -3.2965977825518884,
+          4.183913740517052
+        ],
+        "blocks": 52,
+        "resamples": 2000
+      }
+    }
+  }
+}

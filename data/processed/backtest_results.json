@@ -1,0 +1,65 @@
+{
+  "train_rows": 30995,
+  "test_rows": 8371,
+  "holdout_start": "2013-12-31 23:00:00",
+  "holdout_end": "2014-12-30 23:00:00",
+  "test_mean_pm25": 98.06223868116115,
+  "test_median_pm25": 72.0,
+  "threshold": 150.0,
+  "hours_above_threshold": 1696,
+  "share_hours_above_threshold": 0.20260422888543783,
+  "models": {
+    "XGBoost": {
+      "mae": 60.109691948321625,
+      "rmse": 83.61662476284691,
+      "precision": 0.5496417604912999,
+      "recall": 0.31662735849056606
+    },
+    "Persistence (PM2.5 now)": {
+      "mae": 66.86441285390038,
+      "rmse": 98.04473123356283,
+      "precision": 0.45681953543776055,
+      "recall": 0.4522405660377358
+    },
+    "Training mean": {
+      "mae": 69.07361685786793,
+      "rmse": 93.53428876788497,
+      "precision": null,
+      "recall": 0.0
+    }
+  },
+  "xgboost_cutoffs": [
+    {
+      "cutoff": 150,
+      "precision": 0.5496417604912999,
+      "recall": 0.31662735849056606,
+      "false_share": 0.45035823950870013,
+      "alert_hours": 977,
+      "share_hours_under_alert": 0.11671245968223629
+    },
+    {
+      "cutoff": 120,
+      "precision": 0.43648960739030024,
+      "recall": 0.5571933962264151,
+      "false_share": 0.5635103926096998,
+      "alert_hours": 2165,
+      "share_hours_under_alert": 0.25863098793453587
+    },
+    {
+      "cutoff": 100,
+      "precision": 0.3364140480591497,
+      "recall": 0.7511792452830188,
+      "false_share": 0.6635859519408502,
+      "alert_hours": 3787,
+      "share_hours_under_alert": 0.4523951738143591
+    },
+    {
+      "cutoff": 80,
+      "precision": 0.2801500804002144,
+      "recall": 0.9245283018867925,
+      "false_share": 0.7198499195997856,
+      "alert_hours": 5597,
+      "share_hours_under_alert": 0.6686178473300681
+    }
+  ]
+}

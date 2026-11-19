@@ -1,0 +1,144 @@
+{
+  "rows": 40338,
+  "flagged": 807,
+  "episode_count": 66,
+  "top_episodes_by_flagged_hours": [
+    {
+      "start": "2011-02-20 15:00:00",
+      "end": "2011-02-24 08:00:00",
+      "flagged_hours": 88,
+      "peak_pm25": 595.0,
+      "mean_pm25": 433.46590909090907
+    },
+    {
+      "start": "2014-02-24 16:00:00",
+      "end": "2014-02-26 23:00:00",
+      "flagged_hours": 53,
+      "peak_pm25": 577.0,
+      "mean_pm25": 419.3018867924528
+    },
+    {
+      "start": "2013-01-11 21:00:00",
+      "end": "2013-01-14 09:00:00",
+      "flagged_hours": 51,
+      "peak_pm25": 886.0,
+      "mean_pm25": 482.15686274509807
+    },
+    {
+      "start": "2012-01-18 17:00:00",
+      "end": "2012-01-20 06:00:00",
+      "flagged_hours": 36,
+      "peak_pm25": 558.0,
+      "mean_pm25": 381.5
+    },
+    {
+      "start": "2010-11-18 18:00:00",
+      "end": "2010-11-20 07:00:00",
+      "flagged_hours": 35,
+      "peak_pm25": 569.0,
+      "mean_pm25": 395.34285714285716
+    },
+    {
+      "start": "2014-01-15 21:00:00",
+      "end": "2014-01-17 07:00:00",
+      "flagged_hours": 35,
+      "peak_pm25": 671.0,
+      "mean_pm25": 406.0571428571429
+    },
+    {
+      "start": "2013-01-28 16:00:00",
+      "end": "2013-01-30 04:00:00",
+      "flagged_hours": 34,
+      "peak_pm25": 510.0,
+      "mean_pm25": 421.2352941176471
+    },
+    {
+      "start": "2010-10-09 17:00:00",
+      "end": "2010-10-11 02:00:00",
+      "flagged_hours": 33,
+      "peak_pm25": 449.0,
+      "mean_pm25": 362.90909090909093
+    }
+  ],
+  "jan_2013_flagged_hours": 68,
+  "median_pm25_flagged": 406.0,
+  "median_pm25_unflagged": 71.0,
+  "share_flagged_above_150": 0.9008674101610905,
+  "hours_above_150": 8656,
+  "share_of_hours_above_150_flagged": 0.08398798521256931,
+  "share_flagged_above_250": 0.8686493184634448,
+  "hours_above_250": 2940,
+  "share_of_hours_above_250_flagged": 0.23843537414965987,
+  "share_flagged_above_500": 0.14002478314745972,
+  "hours_above_500": 123,
+  "share_of_hours_above_500_flagged": 0.9186991869918699,
+  "flagged_by_year": {
+    "2010": 185,
+    "2011": 167,
+    "2012": 66,
+    "2013": 220,
+    "2014": 169
+  },
+  "sensitivity": [
+    {
+      "contamination": 0.01,
+      "flagged": 404,
+      "share_above_250": 0.905940594059406,
+      "jaccard_with_2pct": 0.5006195786864932
+    },
+    {
+      "contamination": 0.02,
+      "flagged": 807,
+      "share_above_250": 0.8686493184634448,
+      "jaccard_with_2pct": 1.0
+    },
+    {
+      "contamination": 0.05,
+      "flagged": 2017,
+      "share_above_250": 0.729300941993059,
+      "jaccard_with_2pct": 0.4000991571641051
+    }
+  ],
+  "synthetic_spike_detection_deployed": {
+    "100": 0.0005,
+    "200": 0.001,
+    "400": 0.002
+  },
+  "synthetic_spike_detection_with_jump_feature": {
+    "100": 0.003,
+    "200": 0.0065,
+    "400": 0.016
+  },
+  "jump_variant_overlap_with_deployed_flags": 0.7188498402555911,
+  "jump_variant_share_flagged_above_250": 0.8426270136307311,
+  "real_rises_ge_100": {
+    "hours": 102,
+    "flagged": 8,
+    "share_flagged": 0.0784313725490196
+  },
+  "real_rises_ge_200": {
+    "hours": 16,
+    "flagged": 1,
+    "share_flagged": 0.0625
+  },
+  "top_readings": [
+    {
+      "timestamp": "2012-01-23 01:00:00",
+      "pm25": 994.0,
+      "pm25_lag_1h": 225.0,
+      "flagged": 0
+    },
+    {
+      "timestamp": "2010-02-14 01:00:00",
+      "pm25": 980.0,
+      "pm25_lag_1h": 351.0,
+      "flagged": 0
+    },
+    {
+      "timestamp": "2012-01-23 02:00:00",
+      "pm25": 972.0,
+      "pm25_lag_1h": 994.0,
+      "flagged": 1
+    }
+  ]
+}
