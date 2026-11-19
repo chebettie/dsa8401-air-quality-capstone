@@ -77,8 +77,8 @@ Dockerfile, Dockerfile.ui, docker-compose.yml
 Requirements: Python 3.12 or 3.13, and Docker with Docker Compose for the deployment step.
 
 ```bash
-git clone <repository-url>
-cd <repository-folder>
+git clone https://github.com/chebettie/dsa8401-air-quality-capstone.git
+cd dsa8401-air-quality-capstone
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
