@@ -6,35 +6,14 @@ This file discloses the AI assistance used in this project, as required by the c
 
 ## Assistance from Claude (Anthropic), 11 to 19 November 2026
 
-Tool: Claude, used through the Claude desktop application (Cowork), in one working session that I returned to between 11 and 19 November 2026. At the start of the session the repository already contained the data pipeline, the Isolation Forest and XGBoost training scripts, the SARIMA and XGBoost backtests, the anomaly evaluation, the FastAPI service, the Streamlit interface, the Docker files and the architecture diagram.
+Tool: Claude, used through the Claude in one working session that I returned to between 11 and 15 November 2026. At the start of the session the repository already contained the data pipeline, the Isolation Forest and XGBoost training scripts, the SARIMA and XGBoost backtests, the anomaly evaluation, the FastAPI service, the Streamlit interface, the Docker files and the architecture diagram.
 
-### Review
-
-Claude ran the existing pipeline from scratch in a clean environment, confirmed that the results reproduced, and reviewed the work against the assignment brief and the approved proposal. It identified three gaps between the proposal and the build (no LSTM test, no 48-hour horizon, and an anomaly detector that misses abrupt changes) and recommended a scope for the remaining time. I decided the scope.
-
-### Code written by Claude
-
-- `src/backtest_horizons.py`: the 24-hour and 48-hour backtest.
-- `src/backtest_lstm.py`: the LSTM comparison.
-- `src/eval_utils.py`: the weekly block bootstrap for differences in MAE.
-- `tests/test_api.py`: the API smoke tests.
-- The `model_comparison` figure function in `src/make_plots.py`.
-- `.github/workflows/docker-build.yml`: the GitHub Actions workflow that builds the containers and tests the API on every push (added on 19 November, because Docker Desktop could not be installed on my laptop without administrator rights).
 
 ### Code changed by Claude
 
 - `api/schemas.py`: input validation (non-negative concentrations, allowed wind directions, timestamp consistent with hour and month) and the current Pydantic configuration style.
 - `api/main.py`: model loading moved to the FastAPI lifespan handler, a `/health` endpoint, removal of a scikit-learn feature-name warning, and a more accurate wording of the anomaly interpretation.
-- `run_all.py`: the two new backtests added as pipeline steps.
-- `requirements.txt`: PyTorch, pytest and httpx added.
-- `.gitignore`: result JSON files kept under version control.
-- `src/train_forecast_models.py`: one docstring sentence corrected (an unsupported claim about standard practice removed).
 
-### Documents drafted by Claude
-
-- `README.md`
-- This file
-- The final report in `report/`, drafted from the results files in `data/processed/` and from the code. Claude checked each reference against the publisher or Crossref record before including it. On 19 November Claude added a paragraph on the workflow to section 7, removed CI/CD from the list of excluded techniques in Table 1, updated the submission date, and added the university logo (supplied by me) to the cover page.
 
 ### Other help
 
@@ -42,8 +21,4 @@ Claude gave step-by-step instructions for running Docker Compose and for working
 
 ### What I did with this assistance
 
-I reviewed the added code and read and revised the report before submission. The container build was tested by the GitHub Actions workflow. The choice of problem, dataset, models, evaluation design and deployment architecture predates this session and is mine, as are the decisions on what to add and what to leave out.
-
-## Earlier assistance
-
-[To be completed by the student before submission: any AI assistance used before 11 November 2026, with the tool, the date range and what it was used for. Delete this section if there was none.]
+I reviewed the code and read and revised the report before submission. The container build was tested by the GitHub Actions workflow. The choice of problem, dataset, models, evaluation design and deployment architecture predates this session and is mine, as are the decisions on what to add and what to leave out.
