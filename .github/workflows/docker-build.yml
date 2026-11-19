@@ -1,0 +1,68 @@
+# Builds both containers, starts them with Docker Compose and checks that the
+# API answers. Runs on GitHub's servers on every push, so the container build is
+# tested without Docker installed on a local machine.
+#
+# Place this file in the repository at: .github/workflows/docker-build.yml
+
+name: Docker build and smoke test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Build and start the API and interface
+        # --wait blocks until both containers pass their health checks.
+        run: docker compose up --build --detach --wait --wait-timeout 180
+
+      - name: API health check
+        run: curl --fail --silent --show-error http://localhost:8000/health
+
+      - name: Forecast request
+        run: |
+          curl --fail --silent --show-error -X POST http://localhost:8000/forecast \
+            -H "Content-Type: application/json" \
+            -d '{"timestamp": "2014-12-30T12:00:00", "hour": 12, "month": 12,
+                 "pm25": 180.0, "dew_point": -5.0, "temp": 2.0, "pressure": 1020.0,
+                 "wind_speed": 3.5, "snow_hours": 0, "rain_hours": 0, "wind_dir": "NW",
+                 "pm25_lag_1h": 175.0, "pm25_lag_3h": 160.0, "pm25_lag_24h": 140.0,
+                 "pm25_roll_mean_6h": 165.0, "pm25_roll_std_6h": 12.0,
+                 "pm25_roll_mean_24h": 150.0, "pm25_roll_std_24h": 20.0}'
+
+      - name: Anomaly check request
+        run: |
+          curl --fail --silent --show-error -X POST http://localhost:8000/anomaly-check \
+            -H "Content-Type: application/json" \
+            -d '{"timestamp": "2014-12-30T12:00:00", "hour": 12, "month": 12,
+                 "pm25": 180.0, "dew_point": -5.0, "temp": 2.0, "pressure": 1020.0,
+                 "wind_speed": 3.5, "snow_hours": 0, "rain_hours": 0, "wind_dir": "NW",
+                 "pm25_lag_1h": 175.0, "pm25_lag_3h": 160.0, "pm25_lag_24h": 140.0,
+                 "pm25_roll_mean_6h": 165.0, "pm25_roll_std_6h": 12.0,
+                 "pm25_roll_mean_24h": 150.0, "pm25_roll_std_24h": 20.0}'
+
+      - name: Invalid request is rejected
+        run: |
+          status=$(curl --silent --output /dev/null --write-out "%{http_code}" \
+            -X POST http://localhost:8000/forecast \
+            -H "Content-Type: application/json" -d '{"pm25": -5}')
+          echo "Status: $status"
+          test "$status" = "422"
+
+      - name: Interface health check
+        run: curl --fail --silent --show-error http://localhost:8501/_stcore/health
+
+      - name: Show container logs if anything failed
+        if: failure()
+        run: docker compose logs
+
+      - name: Stop the containers
+        if: always()
+        run: docker compose down
